@@ -20,13 +20,13 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         <engine name="cordova-ios" version=">=5.1.1"/>
     </engines>
 
-    <dependency id="cordova-plugin-firebase-analytics" url="https://github.com/OutSystems/cordova-plugin-firebase-analytics.git#5.0.0-OS"/>
+    <dependency id="cordova-plugin-firebase-analytics" url="https://github.com/OutSystems/cordova-plugin-firebase-analytics.git#5.0.0-OS3"/>
 
     <hook type="before_plugin_install" src="hooks/configurations/installDependencies.js" />
     <hook type="before_plugin_install" src="hooks/configurations/unzipAndCopyConfigurations.js" />
 	
     <platform name="ios">
-        <preference name="IOS_FIREBASE_MESSAGING_VERSION" default="~> 7.0.0"/>
+        <preference name="IOS_FIREBASE_MESSAGING_VERSION" default="~> 8.6.0"/>
 
         <config-file target="config.xml" parent="/*">
             <feature name="FirebaseMessaging">
@@ -56,7 +56,7 @@ xmlns:android="http://schemas.android.com/apk/res/android"
     </platform>
 
     <platform name="android">
-        <preference name="ANDROID_FIREBASE_MESSAGING_VERSION" default="21.0.+"/>
+        <preference name="ANDROID_FIREBASE_MESSAGING_VERSION" default="22.0.0"/>
         <preference name="ANDROIDX_CORE_VERSION" default="1.3.+"/>
 
         <config-file target="res/xml/config.xml" parent="/*">
@@ -71,7 +71,9 @@ xmlns:android="http://schemas.android.com/apk/res/android"
         </config-file>
 
         <config-file target="AndroidManifest.xml" parent="/manifest/application">
-            <service android:name="by.chemerisuk.cordova.firebase.FirebaseMessagingPluginService">
+            <service android:name="by.chemerisuk.cordova.firebase.FirebaseMessagingPluginService" android:exported="true"
+
+>
                 <intent-filter>
                     <action android:name="com.google.firebase.MESSAGING_EVENT"/>
                 </intent-filter>
